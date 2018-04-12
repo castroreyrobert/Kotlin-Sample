@@ -2,7 +2,7 @@ package com.example.kotlinsample
 
 interface MainActivityContract {
     interface View {
-        fun populateList(list : List<Person>)
+        fun populateList(list : List<String>)
     }
 
     interface Presenter {
