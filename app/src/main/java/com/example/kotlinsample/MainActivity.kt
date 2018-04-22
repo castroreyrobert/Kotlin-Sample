@@ -13,12 +13,13 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View{
     private var mListView: ListView? = null
     @Inject lateinit var mPresenter: MainActivityPresenter
     lateinit var component: MainActivityComponent
-    private var mApplication: KotlinApplication? = application as KotlinApplication?
+    private var mApplication: KotlinApplication? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val component = DaggerMainActivityComponent.builder().applicationComponent(mApplication?.appComponent).build()
+        mApplication = application as KotlinApplication
+        val component = DaggerMainActivityComponent.builder().applicationComponent(mApplication?.getComponent()).build()
         component.inject(this)
         this.component  = component
         mPresenter.onAttached(this)

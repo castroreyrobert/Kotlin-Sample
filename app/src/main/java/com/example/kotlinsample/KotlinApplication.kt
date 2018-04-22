@@ -16,4 +16,8 @@ class KotlinApplication : Application() {
         appComponent?.inject(this)
     }
 
+    fun getComponent() : ApplicationComponent? {
+        return appComponent
+    }
+
 }
