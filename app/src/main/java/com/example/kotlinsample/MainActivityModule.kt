@@ -8,6 +8,6 @@ class MainActivityModule {
 
     @Provides
     fun provideMainActivityPresenter(): MainActivityPresenter {
-        return MainActivityPresenter();
+        return MainActivityPresenter()
     }
 }

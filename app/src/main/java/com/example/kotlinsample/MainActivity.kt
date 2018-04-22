@@ -1,5 +1,6 @@
 package com.example.kotlinsample
 
+import android.app.Application
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.ArrayAdapter
@@ -12,11 +13,12 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View{
     private var mListView: ListView? = null
     @Inject lateinit var mPresenter: MainActivityPresenter
     lateinit var component: MainActivityComponent
+    private var mApplication: KotlinApplication? = application as KotlinApplication?
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val component = DaggerMainActivityComponent.builder().build()
+        val component = DaggerMainActivityComponent.builder().applicationComponent(mApplication?.appComponent).build()
         component.inject(this)
         this.component  = component
         mPresenter.onAttached(this)

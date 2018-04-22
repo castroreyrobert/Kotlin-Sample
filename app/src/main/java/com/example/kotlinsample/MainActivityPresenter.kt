@@ -6,7 +6,7 @@ class MainActivityPresenter : BasePresenter<MainActivityContract.View>(), MainAc
     private val mListItem = arrayListOf<String>()
 
     override fun onButtonClicked() {
-        addItemsToTheList();
+        addItemsToTheList()
         t?.populateList(mListItem)
     }
 
